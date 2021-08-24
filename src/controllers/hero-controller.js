@@ -7,12 +7,12 @@ const getHeroes = async (req, res) => {
         power: 100
       },
       {
-        name: 'Superman',
-        identity: 'Clark',
+        name: 'Batman',
+        identity: 'Bruce',
         power: 100
       }
     ]
-    return res.json(heroes);
+    return res.json(heroes)
   } catch (err) {
     return res.sendStatus(end)
   }

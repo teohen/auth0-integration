@@ -1,4 +1,4 @@
-import TokenClient from '../clients/auth0-client.js';
+import TokenClient from '../clients/auth0-client.js'
 
 const getToken = async (req, res) => {
   const clientId = req.body.client_id
@@ -9,8 +9,13 @@ const getToken = async (req, res) => {
     return res.status(200).json(token)
   } catch (err) {
     console.error('token-controller - Error trying to get an authorization token')
-    console.error('Error ', err.message);
-    return res.sendStatus(500);
+    console.error('Error ', err.message)
+    if (err.response.status === 401) {
+      return res.sendStatus(401)
+    } else {
+      return res.sendStatus(500)
+    }
+
   }
 }
 

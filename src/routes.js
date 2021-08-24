@@ -1,11 +1,11 @@
-import { Router } from 'express';
-import jwt from 'express-jwt';
-import jwksRsa from 'jwks-rsa';
+import { Router } from 'express'
+import jwt from 'express-jwt'
+import jwksRsa from 'jwks-rsa'
 
-import HeroController from './controllers/hero-controller.js';
-import TokenController from './controllers/token-controller.js';
+import HeroController from './controllers/hero-controller.js'
+import TokenController from './controllers/token-controller.js'
 
-const routes = Router();
+const routes = Router()
 
 const checkJwk = jwt({
     secret: jwksRsa.expressJwtSecret({
@@ -23,4 +23,4 @@ routes.get('/heroes', checkJwk, HeroController.getHeroes)
 
 routes.post('/auth/token', TokenController.getToken)
 
-export default routes;
+export default routes

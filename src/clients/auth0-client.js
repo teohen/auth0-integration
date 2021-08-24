@@ -1,7 +1,7 @@
-import axios from 'axios';
-import dotenv from 'dotenv';
+import axios from 'axios'
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
 const { AUTH0_URL, AUTH0_AUDIENCE } = process.env
 
@@ -13,11 +13,11 @@ const getToken = async (clientId, clientSecret) => {
       audience: AUTH0_AUDIENCE,
       grant_type: 'client_credentials'
     })
-    return response.data;
+    return response.data
   } catch (err) {
     console.error('auth0-client - error trying to generate a new token')
     console.error('Error ', err.message)
-    throw new Error('Can´t generate a new token')
+    throw err
   }
 }
 
